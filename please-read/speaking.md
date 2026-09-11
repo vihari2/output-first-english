@@ -1,4 +1,4 @@
-# Google Meet Solo Speaking Guide
+# The Speaking Guide
 
 This guide outlines how to use Google Meet for self-directed speaking practice to build fluency, confidence, and spontaneous sentence structure without the pressure of an audience. It also covers **shadowing** as an alternative mode for days you want to focus on rhythm and pronunciation instead of free speech.
 
