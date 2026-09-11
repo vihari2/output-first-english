@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <strong>Live demo:</strong> <a href="https://vihari2.github.io/autodidact-english/">https://vihari2.github.io/autodidact-english/</a>
+  <strong>Live demo:</strong> <a href="https://vihari2.github.io/output-first-english/">https://vihari2.github.io/autodidact-english/</a>
 </p>
 
 <p align="center">
