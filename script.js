@@ -1,6 +1,7 @@
 let blocoAtual = '';
 let isRedirecting = false;
 let authInitialized = false;
+let sessaoFlashcards = null;
 
 const SUPABASE_URL = 'https://cxwyrfngaslvehcodxij.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_NnWB7ZwtU-x4GMVwDLbVeA_mP2mIe99';
@@ -430,62 +431,283 @@ function renderizarBlocoDeTexto(container, nomeBloco) {
 }
 
 // -- Flashcards --
-function renderizarTabelaFlashcards(container) {
-    container.innerHTML = `
-        <button class="btn-adicionar-linha" onclick="adicionarNovaPalavra()">+ New Word</button>
-        <div class="flashcards-container">
-            <table class="tabela-flashcards" style="margin-top: 15px;">
-                <thead>
-                    <tr>
-                        <th>Word</th>
-                        <th>Category</th>
-                        <th>Meaning</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="corpo-tabela-flashcards">
-                </tbody>
-            </table>
-        </div>
-    `;
-    carregarFlashcardsSalvos();
+function obterFlashcards() {
+    try {
+        return JSON.parse(localStorage.getItem('meusFlashcards')) || [];
+    } catch (error) {
+        return [];
+    }
 }
 
-function carregarFlashcardsSalvos() {
-    const corpoTabela = document.getElementById('corpo-tabela-flashcards');
-    let flashcards = JSON.parse(localStorage.getItem('meusFlashcards')) || [];
+function escaparHtml(valor) {
+    const elemento = document.createElement('div');
+    elemento.textContent = valor || '';
+    return elemento.innerHTML;
+}
 
-    corpoTabela.innerHTML = '';
-    flashcards.forEach((item, index) => {
-        corpoTabela.innerHTML += `
-            <tr>
-                <td><input type="text" class="input-meet" value="${item.word || ''}" onchange="salvarEdicaoFlashcard(${index}, 'word', this.value)" placeholder="Ex: blood"></td>
-                <td><input type="text" class="input-meet" value="${item.category || ''}" onchange="salvarEdicaoFlashcard(${index}, 'category', this.value)" placeholder="Ex: Vocabulary"></td>
-                <td><input type="text" class="input-meet" value="${item.meaning || ''}" onchange="salvarEdicaoFlashcard(${index}, 'meaning', this.value)" placeholder="Ex: sangue"></td>
-                <td><button class="btn-remover" onclick="removerFlashcard(${index})">X</button></td>
-            </tr>
-        `;
+function obterBaralhoDoCard(card) {
+    // "category" é usado como baralho para manter os cards criados na versão anterior.
+    const baralho = card.deck || card.category || 'Default';
+    return baralho === 'Padrão' ? 'Default' : baralho;
+}
+
+function obterFrenteDoCard(card) {
+    return card.front || card.word || '';
+}
+
+function obterVersoDoCard(card) {
+    return card.back || card.meaning || '';
+}
+
+function obterBaralhos() {
+    const nomesDosCards = obterFlashcards().map(obterBaralhoDoCard);
+    let baralhosSalvos = [];
+    try {
+        baralhosSalvos = JSON.parse(localStorage.getItem('meusBaralhos')) || [];
+    } catch (error) {
+        baralhosSalvos = [];
+    }
+    const baralhosEmIngles = baralhosSalvos.map((baralho) => baralho === 'Padrão' ? 'Default' : baralho);
+    return [...new Set(['Default', ...baralhosEmIngles, ...nomesDosCards])];
+}
+
+function renderizarTabelaFlashcards(container) {
+    container.innerHTML = `
+        <div class="flashcards-header">
+            <div class="flashcards-tabs" role="tablist" aria-label="Flashcard navigation">
+                <button id="aba-baralhos" class="flashcards-tab ativo" type="button" onclick="mostrarBaralhos()">Decks</button>
+                <button id="aba-adicionar" class="flashcards-tab" type="button" onclick="mostrarFormularioFlashcard()">Add</button>
+            </div>
+        </div>
+        <div id="flashcards-area"></div>
+    `;
+    mostrarBaralhos();
+}
+
+function atualizarAbaFlashcards(abaAtiva) {
+    document.querySelectorAll('.flashcards-tab').forEach((botao) => {
+        const ativa = botao.id === `aba-${abaAtiva}`;
+        botao.classList.toggle('ativo', ativa);
+        botao.setAttribute('aria-selected', ativa);
     });
 }
 
-function adicionarNovaPalavra() {
-    let flashcards = JSON.parse(localStorage.getItem('meusFlashcards')) || [];
-    flashcards.push({ word: '', category: '', meaning: '' });
-    localStorage.setItem('meusFlashcards', JSON.stringify(flashcards));
-    carregarFlashcardsSalvos();
+function mostrarBaralhos() {
+    const area = document.getElementById('flashcards-area');
+    if (!area) return;
+    atualizarAbaFlashcards('baralhos');
+
+    const cards = obterFlashcards();
+    const baralhos = obterBaralhos();
+    area.innerHTML = `
+        <div class="baralhos-acoes">
+            <button class="btn-criar-baralho" type="button" onclick="exibirCriacaoBaralho()">+ Create deck</button>
+        </div>
+        <form id="form-criar-baralho" class="form-criar-baralho oculto">
+            <label for="nome-novo-baralho">Deck name</label>
+            <div class="criar-baralho-controles">
+                <input id="nome-novo-baralho" type="text" maxlength="60" placeholder="E.g.: Irregular verbs" required>
+                <button type="submit">Create</button>
+            </div>
+            <p id="aviso-novo-baralho" class="flashcard-aviso" role="status" aria-live="polite"></p>
+        </form>
+        <section class="lista-baralhos" aria-label="Your decks">
+            ${baralhos.map((baralho) => {
+                const quantidade = cards.filter((card) => obterBaralhoDoCard(card) === baralho).length;
+                return `<button class="baralho-item" type="button" data-baralho="${escaparHtml(baralho)}"><span class="baralho-nome">${escaparHtml(baralho)}</span><span class="baralho-contagem">${quantidade} ${quantidade === 1 ? 'card' : 'cards'}</span></button>`;
+            }).join('')}
+        </section>
+    `;
+    document.getElementById('form-criar-baralho').addEventListener('submit', criarBaralho);
+    document.querySelectorAll('.baralho-item').forEach((botao) => {
+        botao.addEventListener('click', () => abrirBaralho(botao.dataset.baralho));
+    });
 }
 
-function salvarEdicaoFlashcard(index, campo, novoValor) {
-    let flashcards = JSON.parse(localStorage.getItem('meusFlashcards')) || [];
-    flashcards[index][campo] = novoValor;
-    localStorage.setItem('meusFlashcards', JSON.stringify(flashcards));
+function exibirCriacaoBaralho() {
+    const formulario = document.getElementById('form-criar-baralho');
+    formulario.classList.remove('oculto');
+    document.getElementById('nome-novo-baralho').focus();
 }
 
-function removerFlashcard(index) {
-    let flashcards = JSON.parse(localStorage.getItem('meusFlashcards')) || [];
-    flashcards.splice(index, 1);
+function criarBaralho(evento) {
+    evento.preventDefault();
+    const campoNome = document.getElementById('nome-novo-baralho');
+    const nome = campoNome.value.trim();
+    const aviso = document.getElementById('aviso-novo-baralho');
+    const baralhos = obterBaralhos();
+
+    if (baralhos.some((baralho) => baralho.toLocaleLowerCase() === nome.toLocaleLowerCase())) {
+        aviso.textContent = 'This deck already exists';
+        return;
+    }
+
+    let baralhosSalvos = [];
+    try {
+        baralhosSalvos = JSON.parse(localStorage.getItem('meusBaralhos')) || [];
+    } catch (error) {
+        baralhosSalvos = [];
+    }
+    baralhosSalvos.push(nome);
+    localStorage.setItem('meusBaralhos', JSON.stringify(baralhosSalvos));
+    mostrarBaralhos();
+}
+
+function obterEstadoDoCard(card) {
+    return ['new', 'learning', 'review'].includes(card.status) ? card.status : 'new';
+}
+
+function obterContagensDoBaralho(baralho) {
+    return obterFlashcards()
+        .filter((card) => obterBaralhoDoCard(card) === baralho)
+        .reduce((contagens, card) => {
+            contagens[obterEstadoDoCard(card)] += 1;
+            return contagens;
+        }, { new: 0, learning: 0, review: 0 });
+}
+
+function abrirBaralho(baralho) {
+    const area = document.getElementById('flashcards-area');
+    if (!area) return;
+    atualizarAbaFlashcards('baralhos');
+    const contagens = obterContagensDoBaralho(baralho);
+    const total = contagens.new + contagens.learning + contagens.review;
+
+    area.innerHTML = `
+        <section class="visao-baralho">
+            <button class="btn-voltar-baralhos" type="button" onclick="mostrarBaralhos()">← Decks</button>
+            <h3>${escaparHtml(baralho)}</h3>
+            <div class="contagens-estudo" aria-label="Cards para estudar">
+                <div class="contador novo"><strong>${contagens.new}</strong><span>New</span></div>
+                <div class="contador aprendizagem"><strong>${contagens.learning}</strong><span>Learning</span></div>
+                <div class="contador revisar"><strong>${contagens.review}</strong><span>To Review</span></div>
+            </div>
+            <button id="btn-estudar-agora" class="btn-estudar-agora" type="button" ${total === 0 ? 'disabled' : ''}>Study now</button>
+            ${total === 0 ? '<p class="estudo-vazio">Add cards to this deck to start studying.</p>' : ''}
+        </section>
+    `;
+    document.getElementById('btn-estudar-agora').addEventListener('click', () => iniciarEstudo(baralho));
+}
+
+function iniciarEstudo(baralho) {
+    const indices = obterFlashcards()
+        .map((card, indice) => ({ card, indice }))
+        .filter(({ card }) => obterBaralhoDoCard(card) === baralho && obterFrenteDoCard(card) && obterVersoDoCard(card))
+        .map(({ indice }) => indice);
+
+    sessaoFlashcards = { baralho, indices, posicao: 0, respostaVisivel: false };
+    renderizarEstudoAtivo();
+}
+
+function renderizarEstudoAtivo() {
+    const area = document.getElementById('flashcards-area');
+    if (!area || !sessaoFlashcards) return;
+    const { baralho, indices, posicao, respostaVisivel } = sessaoFlashcards;
+
+    if (posicao >= indices.length) {
+        const contagens = obterContagensDoBaralho(baralho);
+        area.innerHTML = `
+            <section class="fim-estudo">
+                <h3>Session complete</h3>
+                <p>You reviewed ${indices.length} ${indices.length === 1 ? 'card' : 'cards'} from ${escaparHtml(baralho)}.</p>
+                <div class="contadores-compactos"><span class="novo">${contagens.new}</span> + <span class="aprendizagem">${contagens.learning}</span> + <span class="revisar">${contagens.review}</span></div>
+                <button id="btn-voltar-ao-baralho" class="btn-estudar-agora" type="button">Back to deck</button>
+            </section>
+        `;
+        document.getElementById('btn-voltar-ao-baralho').addEventListener('click', () => abrirBaralho(baralho));
+        sessaoFlashcards = null;
+        return;
+    }
+
+    const cards = obterFlashcards();
+    const card = cards[indices[posicao]];
+    const contagens = obterContagensDoBaralho(baralho);
+    area.innerHTML = `
+        <section class="tela-estudo" aria-label="Revisão de flashcard">
+            <div class="estudo-topo"><span>${escaparHtml(baralho)}</span><span>${posicao + 1} / ${indices.length}</span></div>
+            <div class="card-estudo">
+                <p class="card-frente">${escaparHtml(obterFrenteDoCard(card))}</p>
+                ${respostaVisivel ? `<div class="card-verso"><span>Back</span><p>${escaparHtml(obterVersoDoCard(card))}</p></div>` : ''}
+            </div>
+            <div class="contadores-compactos" aria-label="New, learning and to review"><span class="novo">${contagens.new}</span> + <span class="aprendizagem">${contagens.learning}</span> + <span class="revisar">${contagens.review}</span></div>
+            ${respostaVisivel
+                ? `<div class="avaliacao-card"><button type="button" class="btn-avaliacao novamente" onclick="avaliarCard('learning')">Again</button><button type="button" class="btn-avaliacao bom" onclick="avaliarCard('review')">Good</button></div>`
+                : `<div class="acoes-estudo"><button type="button" class="btn-skip" onclick="pularCard()">Skip</button><button type="button" class="btn-mostrar-resposta" onclick="mostrarResposta()">Show Answer</button></div>`}
+        </section>
+    `;
+}
+
+function mostrarResposta() {
+    if (!sessaoFlashcards) return;
+    sessaoFlashcards.respostaVisivel = true;
+    renderizarEstudoAtivo();
+}
+
+function pularCard() {
+    if (!sessaoFlashcards) return;
+    sessaoFlashcards.posicao += 1;
+    sessaoFlashcards.respostaVisivel = false;
+    renderizarEstudoAtivo();
+}
+
+function avaliarCard(status) {
+    if (!sessaoFlashcards) return;
+    const indice = sessaoFlashcards.indices[sessaoFlashcards.posicao];
+    const cards = obterFlashcards();
+    cards[indice].status = status;
+    localStorage.setItem('meusFlashcards', JSON.stringify(cards));
+    pularCard();
+}
+
+function mostrarFormularioFlashcard() {
+    const area = document.getElementById('flashcards-area');
+    if (!area) return;
+    atualizarAbaFlashcards('adicionar');
+
+    const opcoesBaralho = obterBaralhos()
+        .map((baralho) => `<option value="${escaparHtml(baralho)}">${escaparHtml(baralho)}</option>`)
+        .join('');
+    area.innerHTML = `
+        <form id="form-adicionar-flashcard" class="form-flashcard">
+            <label for="flashcard-baralho">Deck</label>
+            <select id="flashcard-baralho" required>${opcoesBaralho}</select>
+
+            <label for="flashcard-frente">Front</label>
+            <textarea id="flashcard-frente" rows="4" placeholder="Write the question or word" required></textarea>
+
+            <label for="flashcard-verso">Back</label>
+            <textarea id="flashcard-verso" rows="4" placeholder="Write the answer or meaning" required></textarea>
+
+            <p id="flashcard-aviso" class="flashcard-aviso" role="status" aria-live="polite"></p>
+            <div class="flashcard-acoes">
+                <button class="btn-salvar-flashcard" type="submit">Add</button>
+                <button class="btn-cancelar-flashcard" type="button" onclick="fecharModal()">Close</button>
+            </div>
+        </form>
+    `;
+
+    document.getElementById('form-adicionar-flashcard').addEventListener('submit', adicionarFlashcard);
+    document.getElementById('flashcard-frente').focus();
+}
+
+function adicionarFlashcard(evento) {
+    evento.preventDefault();
+    const baralho = document.getElementById('flashcard-baralho').value.trim();
+    const frente = document.getElementById('flashcard-frente').value.trim();
+    const verso = document.getElementById('flashcard-verso').value.trim();
+    const aviso = document.getElementById('flashcard-aviso');
+
+    if (!baralho || !frente || !verso) return;
+
+    const flashcards = obterFlashcards();
+    // Os campos antigos também são gravados para preservar a compatibilidade da base local.
+    flashcards.push({ deck: baralho, front: frente, back: verso, category: baralho, word: frente, meaning: verso, status: 'new' });
     localStorage.setItem('meusFlashcards', JSON.stringify(flashcards));
-    carregarFlashcardsSalvos();
+
+    document.getElementById('flashcard-frente').value = '';
+    document.getElementById('flashcard-verso').value = '';
+    aviso.textContent = 'Card added';
+    document.getElementById('flashcard-frente').focus();
 }
 
 // -- Other Resources --

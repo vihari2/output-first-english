@@ -259,6 +259,365 @@ textarea {
 }
 .btn-fechar:hover { background: #1557b0; }
 
+/* Flashcards: fluxo simplificado inspirado no Anki */
+.flashcards-header {
+    border-bottom: 1px solid #e5e7eb;
+    margin: -4px 0 22px;
+}
+
+.flashcards-tabs {
+    display: flex;
+    gap: 22px;
+}
+
+.flashcards-tab {
+    appearance: none;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 650;
+    padding: 10px 2px 11px;
+}
+
+.flashcards-tab:hover,
+.flashcards-tab.ativo {
+    color: #1a73e8;
+}
+
+.flashcards-tab.ativo {
+    border-bottom-color: #1a73e8;
+}
+
+.lista-baralhos {
+    display: grid;
+    gap: 10px;
+}
+
+.baralhos-acoes {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 12px;
+}
+
+.btn-criar-baralho {
+    background: #1a73e8;
+    border: 0;
+    border-radius: 9px;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 650;
+    padding: 9px 13px;
+}
+
+.btn-criar-baralho:hover { background: #1557b0; }
+
+.form-criar-baralho {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    margin: 0 0 12px;
+    padding: 14px;
+}
+
+.form-criar-baralho.oculto { display: none; }
+
+.form-criar-baralho label {
+    color: #374151;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 650;
+    margin: 0 0 7px;
+}
+
+.criar-baralho-controles {
+    display: flex;
+    gap: 8px;
+}
+
+.criar-baralho-controles input {
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    box-sizing: border-box;
+    flex: 1;
+    font: inherit;
+    min-width: 0;
+    padding: 9px 10px;
+}
+
+.criar-baralho-controles input:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.13);
+    outline: none;
+}
+
+.criar-baralho-controles button {
+    background: #e5e7eb;
+    border: 0;
+    border-radius: 9px;
+    color: #374151;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 650;
+    padding: 9px 13px;
+}
+
+.form-criar-baralho .flashcard-aviso {
+    margin: 9px 0 0;
+}
+
+.baralho-item {
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    justify-content: space-between;
+    padding: 15px 16px;
+    text-align: left;
+    width: 100%;
+}
+
+.baralho-item:hover {
+    background: #f0f6ff;
+    border-color: #93c5fd;
+}
+
+.baralho-nome {
+    color: #1f2937;
+    font-weight: 650;
+}
+
+.baralho-contagem {
+    color: #64748b;
+    font-size: 0.88rem;
+}
+
+.visao-baralho,
+.fim-estudo {
+    text-align: center;
+}
+
+.visao-baralho h3,
+.fim-estudo h3 {
+    color: #1f2937;
+    font-size: 1.65rem;
+    margin: 10px 0 24px;
+}
+
+.btn-voltar-baralhos {
+    background: transparent;
+    border: 0;
+    color: #64748b;
+    cursor: pointer;
+    font: inherit;
+    padding: 2px;
+}
+
+.btn-voltar-baralhos:hover { color: #1a73e8; }
+
+.contagens-estudo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 0 0 24px;
+}
+
+.contador {
+    background: #f8fafc;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 15px 8px;
+}
+
+.contador strong { font-size: 1.4rem; }
+.contador span { font-size: 0.78rem; font-weight: 650; }
+.novo { color: #2563eb; }
+.aprendizagem { color: #dc2626; }
+.revisar { color: #16a34a; }
+
+.btn-estudar-agora {
+    background: #1a73e8;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    padding: 13px 26px;
+}
+
+.btn-estudar-agora:hover { background: #1557b0; }
+.btn-estudar-agora:disabled { background: #94a3b8; cursor: not-allowed; }
+.estudo-vazio { color: #64748b; font-size: 0.9rem; }
+
+.tela-estudo {
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+}
+
+.estudo-topo {
+    color: #64748b;
+    display: flex;
+    font-size: 0.86rem;
+    justify-content: space-between;
+}
+
+.card-estudo {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 12px;
+    text-align: center;
+}
+
+.card-frente {
+    color: #1f2937;
+    font-size: 1.5rem;
+    line-height: 1.45;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.card-verso {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 26px;
+    padding-top: 18px;
+    width: 100%;
+}
+
+.card-verso span {
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card-verso p {
+    color: #374151;
+    line-height: 1.45;
+    margin: 7px 0 0;
+    white-space: pre-wrap;
+}
+
+.contadores-compactos {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0 0 14px;
+    text-align: center;
+}
+
+.acoes-estudo,
+.avaliacao-card {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 2fr;
+}
+
+.acoes-estudo button,
+.avaliacao-card button {
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    padding: 12px;
+}
+
+.btn-skip,
+.btn-avaliacao.novamente { background: #e5e7eb; color: #374151; }
+.btn-mostrar-resposta,
+.btn-avaliacao.bom { background: #1a73e8; color: #fff; }
+.btn-mostrar-resposta:hover,
+.btn-avaliacao.bom:hover { background: #1557b0; }
+.fim-estudo p { color: #64748b; line-height: 1.5; margin: 0 0 20px; }
+
+.form-flashcard {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-flashcard label {
+    color: #374151;
+    font-size: 0.9rem;
+    font-weight: 650;
+    margin: 0 0 7px;
+}
+
+.form-flashcard select,
+.form-flashcard textarea {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #1f2937;
+    font: inherit;
+    margin: 0 0 17px;
+    padding: 11px 12px;
+    width: 100%;
+}
+
+.form-flashcard select:focus,
+.form-flashcard textarea:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.13);
+    outline: none;
+}
+
+.form-flashcard textarea {
+    height: 105px;
+    resize: vertical;
+}
+
+.flashcard-aviso {
+    color: #15803d;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: -4px 0 14px;
+    min-height: 1.2em;
+}
+
+.flashcard-acoes {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-salvar-flashcard,
+.btn-cancelar-flashcard {
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 650;
+    padding: 11px 17px;
+}
+
+.btn-salvar-flashcard {
+    background: #1a73e8;
+    color: #fff;
+}
+
+.btn-salvar-flashcard:hover { background: #1557b0; }
+
+.btn-cancelar-flashcard {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.btn-cancelar-flashcard:hover { background: #d1d5db; }
+
 @media (max-width: 768px) {
     body {
         padding: 20px 12px 60px;
@@ -362,6 +721,72 @@ textarea {
     .tabela-flashcards th,
     .tabela-flashcards td {
         white-space: nowrap;
+    }
+}
+
+/* Ajustes específicos da experiência de flashcards em telas menores. */
+@media (max-width: 768px) {
+    .flashcards-header {
+        margin-bottom: 16px;
+    }
+
+    .flashcards-tabs {
+        gap: 18px;
+    }
+
+    .baralhos-acoes {
+        justify-content: stretch;
+    }
+
+    .btn-criar-baralho,
+    .btn-estudar-agora {
+        width: 100%;
+    }
+
+    .criar-baralho-controles {
+        flex-direction: column;
+    }
+
+    .criar-baralho-controles button {
+        width: 100%;
+    }
+
+    .form-flashcard textarea {
+        height: 90px;
+    }
+
+    .flashcard-aviso,
+    .form-criar-baralho .flashcard-aviso {
+        margin: 0;
+    }
+
+    .flashcard-acoes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contagens-estudo {
+        gap: 6px;
+    }
+
+    .contador {
+        padding: 12px 5px;
+    }
+
+    .contador span {
+        font-size: 0.7rem;
+    }
+
+    .tela-estudo {
+        min-height: 310px;
+    }
+
+    .card-estudo {
+        padding: 24px 4px;
+    }
+
+    .card-frente {
+        font-size: 1.3rem;
     }
 }
 
@@ -538,4 +963,14 @@ textarea {
 
 .bloco-observacoes textarea {
     height: 100px !important; 
+}
+
+.flashcard-acoes {
+margin-bottom: 10px;
+
+}
+
+.btn-fechar {
+margin-top: 10px;
+
 }
