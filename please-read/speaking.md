@@ -43,6 +43,7 @@ Alternate between the two, or pick whichever matches what you need that day — 
 
 ## Mode 2: Shadowing — Step-by-Step Setup
 
+
 1. **Pick a Source:**
    * Choose a short clip (30 seconds–2 minutes) with clear audio: a podcast segment, a YouTube video, an audiobook excerpt, or a scene from a show. Subtitles/transcript available is a plus.
 2. **Listen First, Cold:**
@@ -98,6 +99,16 @@ Alternate between the two, or pick whichever matches what you need that day — 
 ---
 
 ## Shadowing Source Ideas
+
+### Free English Shadowing Practice Material
+
+To get the most out of your training, choose high-quality, authentic content that matches your current level. For extra listening practice, you can use trusted free resources such as [BBC Learning English](https://www.bbc.co.uk/learningenglish/), [British Council listening practice](https://learnenglish.britishcouncil.org/skills/listening), and [TED Talks with transcripts](https://www.ted.com/talks). These resources are useful for finding clear audio, real pronunciation, and beginner-friendly English shadowing material.
+
+* **Educational Podcasts:** Podcasts like *Spotlight English* or *BBC Learning English* are ideal for beginners because the hosts speak clearly, at a slightly slower pace, and provide full transcripts for every episode.
+* **TEDx Talks and YouTube:** Look for short speeches or vlogs with natural, everyday accents. Choose videos with accurate, manually written closed captions (CC) rather than auto-generated ones.
+* **Audiobooks with Text:** Choose a simple fiction book or self-improvement guide, then play the audiobook while reading along with the e-book or physical copy.
+* **YouGlish:** Use [YouGlish](https://youglish.com/) to hear a word or phrase spoken in real YouTube clips by different speakers.
+* **Movieclips:** Browse [Movieclips on YouTube](https://www.youtube.com/c/MOVIECLIPS/videos) for short film scenes with natural dialogue to repeat and imitate.
 
 * **Podcasts:** short, clearly-spoken episodes or excerpts.
 * **YouTube:** interview clips, vlogs, or explainer videos with a transcript/CC available.
