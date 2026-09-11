@@ -88,7 +88,7 @@
 <p>Check the <code>please-read/</code> folder for specific steps:</p>
 <ul>
   <li>✍️ <a href="please-read/writing-guide.md">Writing &amp; AI Guide</a></li>
-  <li>🎙️ <a href="please-read/speaking-google-meet.md">Solo Speaking Guide</a></li>
+  <li>🎙️ <a href="please-read/speaking.md">Speaking Guide</a></li>
   <li>📚 <a href="please-read/coursebooks.md">Coursebooks List</a></li>
   <li>📖 <a href="please-read/other-resources.md">Other Learning Resources</a></li>
 </ul>
