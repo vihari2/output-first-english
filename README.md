@@ -1,7 +1,6 @@
 <div align="center">
   <br>
-  <h1>📖 Autodidactic English Framework</h1>
-  <strong>Output-First System to Move from A2 to B2 Using Free Tools</strong>
+  <h1>📖 Output-First English Framework</h1>
 </div>
 <br>
 
