@@ -30,7 +30,7 @@
 </p>
 
 <p>
-  By combining daily habit loops with free AI tools, you can continuously catch your own mistakes, learn natural phrasing, and build speaking confidence without needing an expensive teacher or partner.
+  By combining daily habit loops with free AI tools and a built-in spaced-repetition review step, you can continuously catch your own mistakes, learn natural phrasing, and build speaking confidence without needing an expensive teacher or partner.
 </p>
 
 <h2>Table of Contents</h2>
@@ -50,7 +50,8 @@
 
 <ul>
   <li>✍️ <strong>Writing:</strong> Daily journaling + AI feedback (ChatGPT) to catch mistakes and learn natural phrasing.</li>
-  <li>🎙️ <strong>Speaking:</strong> Solo Google Meet calls and conversation apps to practice expressing thoughts in present, past, and future tenses.</li>
+  <li>🎙️ <strong>Speaking:</strong> Solo Google Meet calls to practice expressing thoughts in present, past, and future tenses — or <strong>shadowing</strong> (repeating a short audio/video clip in real time, mimicking rhythm and pronunciation) on days you want to work on flow instead of free speech.</li>
+  <li>🔁 <strong>Review:</strong> Spaced repetition of vocabulary — due flashcards plus any gaps flagged by AI feedback on your journal — before starting the next coursebook section.</li>
 </ul>
 
 <h2 id="the-tools">The Tools</h2>
@@ -58,17 +59,17 @@
 <ul>
   <li><strong>ChatGPT:</strong> Instant corrections and natural rewrites for daily writing.</li>
   <li><strong>Google Meet:</strong> Recording solo practice sessions to build confidence.</li>
-  <li><strong>Coursebooks &amp; YouTube:</strong> Basic grammar structure and listening practice.</li>
-  <li><strong>Local notes &amp; flashcards:</strong> Tracking vocabulary, journal entries, and study progress directly in the website.</li>
+  <li><strong>Coursebooks &amp; YouTube:</strong> Basic grammar structure, listening practice, and shadowing source material.</li>
+  <li><strong>Local notes &amp; flashcards:</strong> Tracking vocabulary, journal entries, and spaced-review scheduling directly in the website.</li>
 </ul>
 
 <h2 id="quick-routine">Quick Routine</h2>
 
 <ol>
   <li>📚 <strong>Study:</strong> Complete one short section of an A1/A2/B1/B2 coursebook.</li>
-  <li>🧠 <strong>Flashcards:</strong> Save new vocabulary and review it in the dashboard.</li>
-  <li>✍️ <strong>Write:</strong> Spend 10–15 minutes writing a daily journal entry; paste it into ChatGPT for feedback.</li>
-  <li>🎙️ <strong>Speak:</strong> Talk out loud for 5–10 minutes in a solo Meet call about your day, plans, or opinions.</li>
+  <li>🧠 <strong>Flashcards:</strong> Save new vocabulary from that section.</li>
+  <li>🎙️✍️ <strong>Speak or Write:</strong> Talk out loud for 5–10 minutes in a solo Meet call (or do a shadowing session), or spend 10–15 minutes writing a daily journal entry and paste it into ChatGPT for feedback.</li>
+  <li>🔁 <strong>Review:</strong> Go through due flashcards plus any gaps ChatGPT flagged in your last journal entry — this feeds into tomorrow's coursebook section.</li>
 </ol>
 
 <p align="center">
