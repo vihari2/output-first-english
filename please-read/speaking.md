@@ -1,6 +1,6 @@
 # Google Meet Solo Speaking Guide
 
-This guide outlines how to use Google Meet for self-directed speaking practice to build fluency, confidence, and spontaneous sentence structure without the pressure of an audience.
+This guide outlines how to use Google Meet for self-directed speaking practice to build fluency, confidence, and spontaneous sentence structure without the pressure of an audience. It also covers **shadowing** as an alternative mode for days you want to focus on rhythm and pronunciation instead of free speech.
 
 ---
 
@@ -8,10 +8,22 @@ This guide outlines how to use Google Meet for self-directed speaking practice t
 * Overcome hesitation and fear of speaking out loud.
 * Practice real-time sentence construction and vocabulary retrieval.
 * Record sessions to evaluate pronunciation, pacing, and recurring grammar errors.
+* Build natural rhythm, stress, and intonation by imitating native speakers (shadowing).
 
 ---
 
-## Step-by-Step Setup
+## Two Modes
+
+| Mode | Best for | Time |
+|---|---|---|
+| **Free speaking (Meet call)** | Vocabulary retrieval, spontaneous sentence structure, confidence | 5–10 min |
+| **Shadowing** | Pronunciation, rhythm, intonation, natural phrasing | 5–10 min |
+
+Alternate between the two, or pick whichever matches what you need that day — free speaking when you want to practice thinking in English, shadowing when you want to sound more natural.
+
+---
+
+## Mode 1: Free Speaking — Step-by-Step Setup
 
 1. **Start a Call:**
    * Go to <a href="https://meet.google.com" target="_blank" rel="noopener noreferrer">meet.google.com</a> and click **New Meeting ➔ Start an instant meeting**.
@@ -21,9 +33,7 @@ This guide outlines how to use Google Meet for self-directed speaking practice t
 3. **Record / Take Notes (Optional):**
    * Keep a notepad or your Notion **Google Meet** log open alongside the window to jot down words you struggled to recall.
 
----
-
-## Recommended Routine (5–10 Minutes)
+### Recommended Routine (5–10 Minutes)
 
 * **Minute 1–2 (Warm-up):** Describe your immediate surroundings, what you did today, or how you are feeling.
 * **Minute 3–7 (Topic Focus):** Pick one prompt (from the list below) and speak continuously about it. Avoid long pauses—if you don't know a word, explain it using simpler English (*circumlocution*).
@@ -31,7 +41,31 @@ This guide outlines how to use Google Meet for self-directed speaking practice t
 
 ---
 
+## Mode 2: Shadowing — Step-by-Step Setup
+
+1. **Pick a Source:**
+   * Choose a short clip (30 seconds–2 minutes) with clear audio: a podcast segment, a YouTube video, an audiobook excerpt, or a scene from a show. Subtitles/transcript available is a plus.
+2. **Listen First, Cold:**
+   * Play the clip once without trying to repeat anything. Just listen for meaning and overall rhythm.
+3. **Listen Again, Sentence by Sentence:**
+   * Pause after each sentence and repeat it out loud, trying to match the speaker's pace, stress, and intonation — not just the words.
+4. **Shadow in Real Time:**
+   * Play the clip again and speak along *simultaneously* with the audio (a beat behind), mimicking rhythm and pronunciation as closely as possible. Don't worry about perfect accuracy — focus on flow.
+5. **Record Yourself (Optional but Recommended):**
+   * Record your shadowing attempt and compare it side by side with the original. Note where your rhythm or pronunciation diverges most.
+6. **Repeat 2–3 Times:**
+   * Each pass should feel smoother. By the third repetition you should be able to shadow the clip almost without hesitation.
+
+### Recommended Routine (5–10 Minutes)
+
+* **Minute 1–2:** Pick a clip and do the cold listen + sentence-by-sentence pass.
+* **Minute 3–7:** Shadow the clip in real time, 2–3 repetitions.
+* **Minute 8–10:** Record a final pass, compare with the original, and note 1–2 recurring pronunciation patterns to watch for.
+
+---
+
 ## Speaking Topics & Prompts
+*(for Google Meet)*
 
 ### 🟩 Beginner (A1–A2)
 * **Hobbies & Free Time:** What do you like to do on weekends? Why do you enjoy it?
@@ -61,7 +95,13 @@ This guide outlines how to use Google Meet for self-directed speaking practice t
 * **Storytelling:** Tell a story about a funny, strange, or awkward moment that happened to you in the past.
 * **Pros & Cons:** Pick a random topic (e.g., living in a big city) and list two pros and two cons out loud.
 
-## Syncing with Website
-After completing a session, add an entry to your **Google Meet** table with:
-* **Date & Duration**
-* **Topic Covered**
+---
+
+## Shadowing Source Ideas
+
+* **Podcasts:** short, clearly-spoken episodes or excerpts.
+* **YouTube:** interview clips, vlogs, or explainer videos with a transcript/CC available.
+* **Audiobooks:** a paragraph or two from a book you're already reading.
+* **TV/Film scenes:** short dialogue exchanges — best when you can find a transcript.
+
+---
