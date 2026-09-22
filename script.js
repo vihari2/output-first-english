@@ -381,7 +381,7 @@ function abrirAnotacao(nomeBloco) {
 
     if (nomeBloco === 'Flashcards') {
         renderizarTabelaFlashcards(areaConteudo);
-    } else if (nomeBloco === 'Google Meet') {
+    } else if (nomeBloco === 'Speaking Notes') {
         renderizarGoogleMeet(areaConteudo);
     } else if (nomeBloco === 'Other Resources') {
         renderizarOtherResources(areaConteudo);
