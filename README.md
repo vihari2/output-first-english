@@ -1,4 +1,4 @@
-# 📖 Output-First English Framework
+<h1 align="center">📖 Output-First English Framework</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Level-A2--B2-blue" alt="Target Level">
@@ -33,10 +33,12 @@ Learn a little, use it immediately, and review what you need.
 
 ## 🛠️ Tools
 
-* **ChatGPT:** Writing corrections, feedback, and conversation practice.
+* **ChatGPT/Gemini:** Writing corrections, feedback, and conversation practice.
 * **Google Meet:** Solo speaking practice and recordings.
 * **YouTube:** Listening and shadowing.
 * **Coursebooks & Flashcards:** Grammar, vocabulary, and spaced repetition.
+* **Lo-fi Music:** Instrumental music for a comfortable study environment.
+
 
 ## 📊 Progress
 
