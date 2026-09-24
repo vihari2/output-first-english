@@ -90,7 +90,7 @@ async function loadProfileFromSupabase() {
 }
 
 // --- Inicialização (carregar background salvo) ---
-window.onload = function() {
+window.onload = function () {
     aplicarBackgroundSalvo();
     // ... suas outras funções de init, se tiver ...
 }
@@ -98,7 +98,7 @@ window.onload = function() {
 function aplicarBackgroundSalvo() {
     const tipoSalvo = localStorage.getItem('bg_type');
     const valorSalvo = localStorage.getItem('bg_value');
-    
+
     if (tipoSalvo === 'image' && valorSalvo) {
         document.body.style.backgroundImage = `url(${valorSalvo})`;
         document.body.style.backgroundSize = 'cover';
@@ -106,7 +106,7 @@ function aplicarBackgroundSalvo() {
         document.body.style.backgroundRepeat = 'no-repeat';
     } else {
         // Se for cor ou nada salvo, reseta para a cor padrão do body (a que vc usa na imagem 3)
-        document.body.style.backgroundColor = '#F0F2F5'; 
+        document.body.style.backgroundColor = '#F0F2F5';
         document.body.style.backgroundImage = 'none';
     }
 }
@@ -115,7 +115,7 @@ function aplicarBackgroundSalvo() {
 const btnConfig = document.getElementById('btn-config-bg');
 
 if (btnConfig) {
-    btnConfig.addEventListener('click', function() {
+    btnConfig.addEventListener('click', function () {
         const modal = document.getElementById('modal-config-bg');
         if (modal) {
             modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
@@ -144,27 +144,27 @@ function toggleBgOption(option) {
 function handleImageUpload(input) {
     if (input.files && input.files[0]) {
         const file = input.files[0];
-        
+
         // Verificação simples de tamanho (ex: 5MB)
         if (file.size > 5 * 1024 * 1024) {
             alert("A imagem é muito grande. Máximo 5MB.");
             input.value = ""; // Limpa o input
             return;
         }
-        
+
         const reader = new FileReader();
-        
-        reader.onload = function(e) {
+
+        reader.onload = function (e) {
             const base64Image = e.target.result;
-            
+
             // Salva no localStorage
             localStorage.setItem('bg_type', 'image');
             localStorage.setItem('bg_value', base64Image);
-            
+
             // Aplica imediatamente
             aplicarBackgroundSalvo();
         }
-        
+
         reader.readAsDataURL(file); // Converte a imagem para Base64
     }
 }
@@ -513,9 +513,9 @@ function mostrarBaralhos() {
         </form>
         <section class="lista-baralhos" aria-label="Your decks">
             ${baralhos.map((baralho) => {
-                const quantidade = cards.filter((card) => obterBaralhoDoCard(card) === baralho).length;
-                return `<button class="baralho-item" type="button" data-baralho="${escaparHtml(baralho)}"><span class="baralho-nome">${escaparHtml(baralho)}</span><span class="baralho-contagem">${quantidade} ${quantidade === 1 ? 'card' : 'cards'}</span></button>`;
-            }).join('')}
+        const quantidade = cards.filter((card) => obterBaralhoDoCard(card) === baralho).length;
+        return `<button class="baralho-item" type="button" data-baralho="${escaparHtml(baralho)}"><span class="baralho-nome">${escaparHtml(baralho)}</span><span class="baralho-contagem">${quantidade} ${quantidade === 1 ? 'card' : 'cards'}</span></button>`;
+    }).join('')}
         </section>
     `;
     document.getElementById('form-criar-baralho').addEventListener('submit', criarBaralho);
@@ -631,8 +631,8 @@ function renderizarEstudoAtivo() {
             </div>
             <div class="contadores-compactos" aria-label="New, learning and to review"><span class="novo">${contagens.new}</span> + <span class="aprendizagem">${contagens.learning}</span> + <span class="revisar">${contagens.review}</span></div>
             ${respostaVisivel
-                ? `<div class="avaliacao-card"><button type="button" class="btn-avaliacao novamente" onclick="avaliarCard('learning')">Again</button><button type="button" class="btn-avaliacao bom" onclick="avaliarCard('review')">Good</button></div>`
-                : `<div class="acoes-estudo"><button type="button" class="btn-skip" onclick="pularCard()">Skip</button><button type="button" class="btn-mostrar-resposta" onclick="mostrarResposta()">Show Answer</button></div>`}
+            ? `<div class="avaliacao-card"><button type="button" class="btn-avaliacao novamente" onclick="avaliarCard('learning')">Again</button><button type="button" class="btn-avaliacao bom" onclick="avaliarCard('review')">Good</button></div>`
+            : `<div class="acoes-estudo"><button type="button" class="btn-skip" onclick="pularCard()">Skip</button><button type="button" class="btn-mostrar-resposta" onclick="mostrarResposta()">Show Answer</button></div>`}
         </section>
     `;
 }
@@ -722,6 +722,10 @@ function renderizarOtherResources(container) {
                         <td><b><a href="https://translate.google.com" target="_blank" style="color: #1a73e8; text-decoration: none;">Google Translate</a> / <a href="https://reverso.net" target="_blank" style="color: #1a73e8; text-decoration: none;">Reverso</a></b></td>
                         <td>Quick reverse-translation & synonyms.</td>
                     </tr>
+                     <tr>
+                        <td><b><a href="https://www.wordreference.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">WordReference</a> 
+                        <td>Quick reverse-translation & synonyms.</td>
+                    </tr>
                     <tr>
                         <td><b><a href="https://www.efset.org" target="_blank" style="color: #1a73e8; text-decoration: none;">EF SET</a></b></td>
                         <td>Free 50-minute level assessment exam.</td>
@@ -731,16 +735,199 @@ function renderizarOtherResources(container) {
                         <td>Hear real native pronunciation via YouTube.</td>
                     </tr>
                 </table>
+                <h3 style="color: #1a73e8;">🌐 Reading Websites</h3>
+
+                <table class="tabela-meet" style="margin-bottom: 20px;">
+                    <tr>
+                        <th>Website</th>
+                        <th>Purpose</th>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://www.bbc.com/news" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                BBC News
+                            </a><b>
+                        </td>
+                        <td>News articles for reading practice.</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://www.nytimes.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                The New York Times
+                            </a><b>
+                        </td>
+                        <td>News articles for reading practice.</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://www.theguardian.com/international" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                The Guardian
+                            </a><b>
+                        </td>
+                        <td>News articles for reading practice.</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://www.themarginalian.org/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                The Marginalian
+                            </a><b>
+                        </td>
+                        <td>Essays and articles for reading practice.</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://www.projectgutenberg.org/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                Project Gutenberg
+                            </a></b>
+                        </td>
+                        <td>Free eBooks of classic literature.</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://psyche.co/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                Psyche
+                            </a></b>
+                        </td>
+                        <td>Essays and articles on culture, creativity, and communication.</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>
+                            <a href="https://bigthink.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                                Big Think
+                            </a><b/>
+                        </td>
+                        <td>Essays and articles on culture, creativity, and communication.</td>
+                    </tr>
+                    <tr>
+                        <td><b>
+                        <a href="https://readinlevels.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                        Read in Levels
+                        </a><b/>
+                        </td>
+                        <td>News adapted to different English levels, with audio, vocabulary and exercises.<td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>
+                        <a href="https://www.wired.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                        Wired
+                        </a><b/>
+                        </td>
+                        <td>Articles on technology, science, culture, and innovation.<td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>
+                        <a href="https://theconversation.com/global" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                        The Conversation
+                        </a><b/>
+                        </td>
+                        <td>Articles by academics and researchers on science, society, culture, and current issues.<td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>
+                        <a href="https://www.nationalgeographic.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                        National Geographic
+                        </a><b/>
+                        </td>
+                        <td>Articles on nature, science, and global issues.<td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>
+                        <a href="https://www.vox.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                        Vox
+                        </a><b/>
+                        </td>
+                        <td>Articles on politics, economics, and social issues.<td>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td><b>
+                        <a href="https://www.openculture.com/" target="_blank" style="color: #1a73e8; text-decoration: none;">
+                        Open Culture
+                        </a><b/>
+                        </td>
+                        <td>Articles on arts, literature, and culture.<td>
+                        </td>
+                    </tr>
+                     
+                </table>
+
             <h3 style="color: #1a73e8;">📖 English Books by CEFR Level</h3>
+
             <table class="tabela-meet" style="margin-bottom: 20px;">
-                <tr><th>Level</th><th>Title</th></tr>
-                <tr><td><b>A1</b></td><td>The Very Hungry Caterpillar, The Cat in the Hat, Charlotte's Web</td></tr>
-                <tr><td><b>A2</b></td><td>Charlie and the Chocolate Factory, Matilda, The Giver</td></tr>
-                <tr><td><b>B1</b></td><td>The Hunger Games, To Kill a Mockingbird, Harry Potter</td></tr>
-                <tr><td><b>B2</b></td><td>The Hobbit, 1984, The Alchemist, Fahrenheit 451</td></tr>
-                <tr><td><b>C1</b></td><td>Pride and Prejudice, Game of Thrones, Jane Eyre</td></tr>
-                <tr><td><b>C2</b></td><td>Lolita, The Handmaid's Tale, Little Women</td></tr>
+                <tr>
+                    <th style="width: 70px;">Level</th>
+                    <th>Recommended Books</th>
+                </tr>
+
+                <tr>
+                    <td><b>A1</b></td>
+                    <td>
+                        <i>The Very Hungry Caterpillar</i> ·
+                        <i>Brown Bear, Brown Bear, What Do You See?</i> ·
+                        <i>The Cat in the Hat</i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>A2</b></td>
+                    <td>
+                        <i>Charlotte's Web</i> ·
+                        <i>Matilda</i> ·
+                        <i>Charlie and the Chocolate Factory</i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>B1</b></td>
+                    <td>
+                        <i>The Giver</i> ·
+                        <i>Wonder</i> ·
+                        <i>Harry Potter and the Philosopher's Stone</i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>B2</b></td>
+                    <td>
+                        <i>The Hunger Games</i> ·
+                        <i>The Hobbit</i> ·
+                        <i>The Alchemist</i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>C1</b></td>
+                    <td>
+                        <i>1984</i> ·
+                        <i>Fahrenheit 451</i> ·
+                        <i>Jane Eyre</i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><b>C2</b></td>
+                    <td>
+                        <i>Pride and Prejudice</i> ·
+                        <i>The Handmaid's Tale</i> ·
+                        <i>Lolita</i>
+                    </td>
+                </tr>
             </table>
+
+<p style="font-size: 0.8em; color: #666; margin-top: -10px;">
+    <i>Note: CEFR levels are approximate and may vary depending on the reader and edition.</i>
+</p>
         </div>
     `;
 }
