@@ -9,6 +9,32 @@
 | <strong><a href="https://youglish.com/" target="_blank" rel="noopener noreferrer">YouGlish</a></strong> | Pronunciation & Context | Search any word or phrase to hear real native speakers pronounce it across YouTube videos. |
 
 ---
+## 🌐 Websites
+
+| Website | Purpose |
+| :--- | :--- |
+| [BBC News](https://www.bbc.com/news) | News articles covering world events, science, and culture. |
+| [The New York Times](https://www.nytimes.com/) | Journalism, opinion pieces, culture, and current affairs. |
+| [The Guardian](https://www.theguardian.com/international) | International news, long-form journalism, and society. |
+| [The Atlantic](https://www.theatlantic.com/world/) | In-depth journalism, essays, and global culture. |
+| [WIRED](https://www.wired.com/) | Technology, science, business, culture, and innovation. |
+| [The Conversation](https://theconversation.com/) | Articles written by academics and researchers on science, society, and current issues. |
+| [Big Think](https://bigthink.com/) | Ideas on philosophy, psychology, science, and human behavior. |
+| [Psyche](https://psyche.co/) | Essays on psychology, philosophy, and the human experience. |
+| [Aeon](https://aeon.co/) | Long-form essays exploring philosophy, science, culture, and society. |
+| [The Marginalian](https://www.themarginalian.org/) | Essays on literature, creativity, philosophy, and the meaning of life. |
+| [Smithsonian Magazine](https://www.smithsonianmag.com/) | History, science, art, nature, and culture. |
+| [Quanta Magazine](https://www.quantamagazine.org/) | Science journalism covering mathematics, physics, biology, and computer science. |
+| [Nautilus](https://nautil.us/) | Science, philosophy, and culture through narrative journalism. |
+| [Scientific American](https://www.scientificamerican.com/) | Science, technology, research, and discoveries. |
+| [MIT Technology Review](https://www.technologyreview.com/) | Emerging technologies, artificial intelligence, and innovation. |
+| [National Geographic](https://www.nationalgeographic.com/) | Science, nature, history, wildlife, and exploration. |
+| [Mental Floss](https://www.mentalfloss.com/) | Interesting facts, trivia, history, science, and pop culture. |
+| [Vox](https://www.vox.com/) | Explanatory journalism on science, culture, and current events. |
+| [Open Culture](https://www.openculture.com/) | Free audiobooks, eBooks, online courses, and educational resources. |
+| [Project Gutenberg](https://www.gutenberg.org/) | Free eBooks of classic literature and public-domain works. |
+
+---
 
 ## 📖 English Books by CEFR Level
 
